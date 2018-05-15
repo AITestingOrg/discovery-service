@@ -1,0 +1,36 @@
+---
+spring:
+  profiles: dev
+ 
+server:
+  port: 8080
+  
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    org.aitesting.microservices: DEBUG
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+        
+---
+spring:
+  profiles: test
+  
+server:
+  port: 8080
+  
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    org.aitesting.microservices: DEBUG
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+

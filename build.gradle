@@ -11,8 +11,11 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'checkstyle'
 
+jar.baseName = 'discoveryservice'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -29,13 +32,37 @@ ext {
 }
 
 dependencies {
+	compile('org.springframework.cloud:spring-cloud-starter-config')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+checkstyle {
+	toolVersion = "8.7"
+	configFile = new File(rootDir, "checkstyle.xml")
+}
+
+checkstyleMain {
+	source = fileTree('src/main') {
+		excludes = ['*.yml']
+	}
+}
+checkstyleTest {
+	source = fileTree('src/test') {
+		excludes = ['*.yml']
+	}
 }
 
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
 }

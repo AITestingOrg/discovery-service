@@ -1,0 +1,11 @@
+version: '3.0'
+
+services:
+            
+  discoveryservice:
+    build: ./
+    container_name: discoveryservice
+    ports:
+      - '8761:8080'
+    environment:
+      - 'eviction-interval-timer-in-ms: 1000'

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: discoveryservice
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://${CONFIGURATION_HOST:localhost}:8888
+      enabled: true
+
