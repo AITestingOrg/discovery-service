@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.4.RELEASE'
+		springBootVersion = '1.5.14.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -16,7 +16,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'checkstyle'
 
 jar.baseName = 'discoveryservice'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = 1.8
 
 repositories {
@@ -28,12 +28,12 @@ configurations {
 }
 
 ext {
-	springCloudVersion = 'Dalston.SR1'
+	springCloudVersion = 'Edgware.SR3'
 }
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-config')
-	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
